@@ -16,7 +16,7 @@ namespace Palindrome
             StringBuilder sb = new StringBuilder();
 
             sb.Append(text);
-            for (int i = 0; i < text.Length; i++)
+            for (int i = text.Length - 1; i >= 0; i--)
             {
                 sb.Append(text[i]);
             }
