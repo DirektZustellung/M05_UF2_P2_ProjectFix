@@ -28,8 +28,9 @@ namespace DayOfTheWeek
         }
         public static int DayOfTheWeek(int year, int month, int day)
         {
-            //TODO
-            return -1;
+            DateTime dateValue = new DateTime(year, month, day);
+            
+            return (int)dateValue.DayOfWeek;
         }
     }
 }
