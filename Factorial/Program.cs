@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Factorial
 {
@@ -38,18 +39,19 @@ namespace Factorial
 
         public static float average(List<float> numbers)
         {
-            float sum = 0;
-            for (int i = 0; i < numbers.Count; i++)
-            {
-                sum += numbers[i];
-            }
-            return sum;
+            /* float sum = 0;
+             for (int i = 0; i < numbers.Count; i++)
+             {
+                 sum += numbers[i];
+             }
+             return sum / numbers.Count;*/
+            return numbers.Average();
         }
         public static ulong factorial_recursive(ulong n)
         {
             if (n < 1)
             {
-                return factorial_recursive(n - 1);
+                return 1;
             }
             return n * factorial_recursive(n - 1);
         }
