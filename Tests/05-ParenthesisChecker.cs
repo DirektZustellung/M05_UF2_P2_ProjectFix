@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Tests
 {
@@ -29,9 +30,24 @@ namespace Tests
             bool resultOK = false;
             if (original[0] == '(' && original.Length % 2 == 0 && original.Last() == ')')
             {
-                int countOpen = original.Count(c => c == '(');
+                /*int countOpen = original.Count(c => c == '(');
                 int countClose = original.Count(c => c == ')');
-                resultOK = countOpen == countClose;
+                resultOK = countOpen == countClose;*/
+                int count = 0;
+                for (int i = 0; i < original.Length; i++)
+                {
+                    if (original[i] == '(')
+                    {
+                        count++;
+                    }
+                    if (original[i] == ')')
+                    {
+                        count--;
+                    }
+                    if (count < 0) break;
+                    
+                }
+                if (count == 0) resultOK = true;
             }
             bool result = false;
             //Act

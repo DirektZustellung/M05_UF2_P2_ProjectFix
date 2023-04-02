@@ -10,7 +10,7 @@ namespace ParenthesisChecker
             Console.WriteLine("Please write a text with parenthesis");
             string response = Console.ReadLine();
             int open = CountChars(response, '(');
-            int close = CountChars(response, ')');
+            int close = CountChars(response, ')');      
             
             
             if(open == close)
@@ -24,66 +24,46 @@ namespace ParenthesisChecker
         }
         public static int CountChars(string text, char search)
         {
-            int amount = 0;
-            
-            
-            if ((text[0] == '(' && text[text.Length -1] == ')' && text.Length % 2 == 0) || (search =='(')) 
-            {
-                for (int i = 0; i < text.Length; i++)
-                {
-                    if (text[i] == search)
-                    {
+               int amount = 0;
+               int amountClose = 0;
 
-                        amount++;
-                    }
-                    if (amount < 0 && search ==')') return amount;
-                    
-                }
-            }
-            else return -1;
-           
-            return amount;
-            /*bool isOpen = false;
-            if (text[0]== '(') isOpen = true;
-            
-            foreach (char c in text)
-            {
-                if (c == search)
-                {
-                    if (search == '(')
-                    { 
-                        amount++;
-                        isOpen = true;
-                    }
-                    else
-                    {
-                        amount--;
-                        isOpen = false;
-                    }
-                }
-                else if (c == '(')
-                {
-                    amount++;
-                    isOpen = true;
-                }
-                else if (c == ')')
-                {
-                    amount--;
-                    isOpen = false;
-                }
+               if ((text[0] == '(' && text[text.Length -1] == ')' && text.Length % 2 == 0) || (search =='(')) 
+               {
+                   for (int i = 0; i < text.Length; i++)
+                   {
+                       if (text[i] == '(')
+                       {
+                           if (search == '(') amount++;
+                           amountClose++;
+                       }
+                       else
+                       {
+                           amountClose--;
+                           if (amountClose < 0)
+                           {
+                               if (search == '(') return amount;                            
+                               return amountClose;
+                           }
 
-                if (amount < 0)
-                {
+                       }
+
+                   }
+                   if (amountClose != 0 && search == '(') return amount; 
+                   if (amountClose == 0) return amountClose;
+
+               }
+               else if (search == '(')
+               {
                     return amount;
-                }
-            }
-            if (amount == 0 && isOpen == false)
-            {
-                return 0;
-            }
-            return amount;*/
+               }
+               else if (search == ')')
+               {
+                    return -1;
+               }
 
-            /*return amount;*/
+            return amountClose;
+
+    
         }
     }
 }
