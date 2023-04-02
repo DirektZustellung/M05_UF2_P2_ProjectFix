@@ -25,6 +25,7 @@ namespace Tests
                 }
             }
             string original = sb.ToString();
+            
             bool resultOK = false;
             if (original[0] == '(' && original.Length % 2 == 0 && original.Last() == ')')
             {
